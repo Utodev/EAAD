@@ -20,6 +20,7 @@ type
     LabelDetails: TLabel;
     LabelDetails1: TLabel;
     LabelDetails2: TLabel;
+    LabelDetails3: TLabel;
     LabelnGithubSite: TLabel;
     procedure ImageClick(Sender: TObject);
     procedure LabelnGithubSiteClick(Sender: TObject);

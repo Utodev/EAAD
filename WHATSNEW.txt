@@ -1,0 +1,1 @@
+2018-01-20 - Fixed start.database file, contained a [SUB] character that was messing around with the new processes.

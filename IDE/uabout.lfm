@@ -9,12 +9,12 @@ object fAbout: TfAbout
   ClientWidth = 352
   Color = clWhite
   Position = poMainFormCenter
-  LCLVersion = '1.4.2.0'
+  LCLVersion = '1.6.2.0'
   object Image: TImage
-    Left = 232
-    Height = 72
+    Left = 240
+    Height = 67
     Top = 32
-    Width = 112
+    Width = 104
     OnClick = ImageClick
     Picture.Data = {
       1754506F727461626C654E6574776F726B47726170686963FE24000089504E47
@@ -318,17 +318,17 @@ object fAbout: TfAbout
     Stretch = True
   end
   object Label1: TLabel
-    Left = 15
+    Left = 16
     Height = 15
     Top = 32
-    Width = 187
-    Caption = 'Editor de Aventuras AD(C) 2015 Uto'
+    Width = 216
+    Caption = 'Editor de Aventuras AD(C) 2015-2018 Uto'
     ParentColor = False
   end
   object LabelDetails: TLabel
-    Left = 15
+    Left = 16
     Height = 15
-    Top = 64
+    Top = 66
     Width = 155
     Caption = 'Lazarus source code avaliable'
     ParentColor = False
@@ -378,6 +378,14 @@ object fAbout: TfAbout
     Top = 171
     Width = 261
     Caption = 'it''s endorsed/recommended by El Viejo Archivero'
+    ParentColor = False
+  end
+  object LabelDetails3: TLabel
+    Left = 15
+    Height = 15
+    Top = 48
+    Width = 24
+    Caption = 'v 1.1'
     ParentColor = False
   end
 end

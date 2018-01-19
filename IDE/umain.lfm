@@ -150,7 +150,7 @@ object fMain: TfMain
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '1.4.2.0'
+  LCLVersion = '1.6.2.0'
   WindowState = wsMaximized
   object PanelBackground: TPanel
     Left = 0
@@ -3341,6 +3341,7 @@ object fMain: TfMain
     SelectedColor = clMaroon
     CaseSensitive = False
     Width = 262
+    AutoUseSingleIdent = True
     ShortCut = 16416
     EndOfTokenChr = '()[].'
     ExecCommandID = ecSynCompletionExecute
