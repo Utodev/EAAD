@@ -5,5 +5,5 @@
 - Fixed a small typo at the eaad.es.po language file "Guadar" -> "Guardar"
 - Fixed the SKIP bug at process table 6 on the database.start file. 
 - Changed deprecated FileUtil module at umain.pas,uoptions.pas to LazFileUtils
-- Changed paths of the 'Release' directory at eaad.lpi, so it stays within the EAAD directory
-- Finally, modified the default saving extension of NewAdventure.txp to .SCE at uglobals.pas
+- Changed paths of 'Release' dir at eaad.lpi, stays within the EAAD directory
+- Finally, modified default saving extension of NewAdventure.txp to .SCE at uglobals.pas, as well as into the eaad.es.po, eaad.en.po, eaad.po language files.

@@ -618,7 +618,7 @@ msgid "EAAD Editor (C) 2015 Uto"
 msgstr ""
 
 #: uglobals.s_default_filename
-msgid "NewAdventure.txp"
+msgid "NewAdventure.SCE"
 msgstr ""
 
 #: uglobals.s_direction

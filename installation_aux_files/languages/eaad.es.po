@@ -663,8 +663,8 @@ msgid "EAAD Editor (C) 2015 Uto"
 msgstr "EAAD Editor (C) 2015 Uto"
 
 #: uglobals.s_default_filename
-msgid "NewAdventure.txp"
-msgstr "NuevaAventura.txp"
+msgid "NewAdventure.SCE"
+msgstr "NuevaAventura.SCE"
 
 #: uglobals.s_direction
 msgid "Direction"
