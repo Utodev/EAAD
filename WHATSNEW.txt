@@ -1,1 +1,9 @@
 2018-01-20 - Fixed start.database file, contained a [SUB] character that was messing around with the new processes.
+2018-02-25 - Created a branch for RunZX2018 DAAD Workshop with some modifications. 
+
+- Added and INSTALL text file with some directions for Windows/Linux Users
+- Fixed a small typo at the eaad.es.po language file "Guadar" -> "Guardar"
+- Fixed the SKIP bug at process table 6 on the database.start file. 
+- Changed deprecated FileUtil module at umain.pas,uoptions.pas to LazFileUtils
+- Changed paths of the 'Release' directory at eaad.lpi, so it stays within the EAAD directory
+- Finally, modified the default saving extension of NewAdventure.txp to .SCE at uglobals.pas

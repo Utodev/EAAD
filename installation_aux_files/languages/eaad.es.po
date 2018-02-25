@@ -92,7 +92,7 @@ msgstr "Reemplazar"
 
 #: tfmain.bsave.hint
 msgid "Save"
-msgstr "Guadar"
+msgstr "Guardar"
 
 #: tfmain.bundo.hint
 msgctxt "TFMAIN.BUNDO.HINT"

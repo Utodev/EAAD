@@ -1,0 +1,22 @@
+Install Guide for Debian x64
+----------------------------
+From the shell prompt:
+
+$ apt-get install lazarus
+$ git clone https://github.com/Utodev/EAAD.git
+$ mkdir -p EAAD/IDE/Release
+$ cp -afrv EAAD/installation_aux_files/* EAAD/Release/.
+$ lazarus-ide EAAD/IDE/eaad.lpi
+
+Within the Lazarus IDE; Execute Menu > Compile
+Once compiled, just run ./EAAD/Release/eaad
+
+Install Guide for Windows 10 x64
+---------------------------------
+*) Download the source code from https://github.com/Utodev/EAAD/archive/master.zip 
+*) Download and install Lazarus https://www.lazarus-ide.org/ 
+*) Extract the Source code files, locate and open EAAD.LPI with Lazarus
+*) Create the EAAD/Release folder, copy the installation_aux_files contents on it
+
+Within the Lazarus IDE; Execute Menu > Compile
+Once compiled, just run ./EAAD/Release/eaad

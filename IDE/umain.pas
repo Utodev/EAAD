@@ -5,7 +5,7 @@ unit UMain;
 interface
 
 uses
-   {$IFDEF Windows}windows,{$endif} Classes, SysUtils, FileUtil, SynHighlighterAny,
+   {$IFDEF Windows}windows,{$endif} Classes, SysUtils, LazFileUtils, SynHighlighterAny,
    SynEdit, ExtendedNotebook, Forms, Controls, Graphics, Dialogs, Menus,
    ExtCtrls, ComCtrls, StdCtrls, Buttons, UConfig, usce, UAbout, SynEditTypes,
    SynCompletion, Clipbrd, LCLTranslator, types, LCLType;

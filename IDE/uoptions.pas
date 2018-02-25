@@ -5,7 +5,7 @@
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ComCtrls,
+  Classes, SysUtils, LazFileUtils, Forms, Controls, Graphics, Dialogs, ComCtrls,
   StdCtrls, Menus, UConfig, DefaultTranslator;
 
 type
