@@ -60,7 +60,7 @@ resourcestring
   S_INVALID_PROCESS_NUMBER = 'Invalid Process Number';
   S_INVALID_SECTION = 'Invalid section';
 
-  S_DEFAULT_FILENAME = 'NewAdventure.txp';
+  S_DEFAULT_FILENAME = 'NewAdventure.SCE';
   S_NEWGAME_FILES_NOT_FOUND = 'One or more files required to create a new game are missing, please check your installation.';
 
   //UOptions
