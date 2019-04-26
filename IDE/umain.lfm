@@ -6,10 +6,9 @@ object fMain: TfMain
   Align = alClient
   AlphaBlend = True
   Caption = 'EAAD'
-  ClientHeight = 575
+  ClientHeight = 580
   ClientWidth = 800
   Color = 2238503
-  DesignTimePPI = 120
   Icon.Data = {
     BE1000000000010001002020000001002000A810000016000000280000002000
     0000400000000100200000000000001000000000000000000000000000000000
@@ -152,28 +151,28 @@ object fMain: TfMain
   OnResize = FormResize
   OnShow = FormShow
   Position = poDesktopCenter
-  LCLVersion = '2.0.2.0'
+  LCLVersion = '2.0.0.4'
   WindowState = wsMaximized
   object PanelBackground: TPanel
     Left = 0
-    Height = 575
+    Height = 580
     Top = 0
     Width = 800
     Align = alClient
     Caption = 'Editor de Aventuras  AD (C) 2015 Uto'
-    ClientHeight = 575
+    ClientHeight = 580
     ClientWidth = 800
     Font.Color = clSilver
     ParentFont = False
     TabOrder = 0
     object PageControl: TPageControl
       Left = 1
-      Height = 449
-      Top = 63
+      Height = 478
+      Top = 51
       Width = 798
       Align = alClient
       Font.CharSet = ANSI_CHARSET
-      Font.Height = -20
+      Font.Height = -16
       Font.Name = 'Consolas'
       Font.Pitch = fpFixed
       Font.Quality = fqDraft
@@ -188,11 +187,11 @@ object fMain: TfMain
     end
     object Toolbar: TPanel
       Left = 1
-      Height = 62
+      Height = 50
       Top = 1
       Width = 798
       Align = alTop
-      ClientHeight = 62
+      ClientHeight = 50
       ClientWidth = 798
       Font.Color = clSilver
       ParentFont = False
@@ -200,13 +199,13 @@ object fMain: TfMain
       object BOpen: TSpeedButton
         AnchorSideLeft.Control = Toolbar
         AnchorSideTop.Control = Toolbar
-        Left = 63
-        Height = 50
+        Left = 51
+        Height = 40
         Hint = 'Open'
-        Top = 7
-        Width = 50
-        BorderSpacing.Left = 62
-        BorderSpacing.Top = 6
+        Top = 6
+        Width = 40
+        BorderSpacing.Left = 50
+        BorderSpacing.Top = 5
         Color = 2238503
         Flat = True
         Font.Color = clSilver
@@ -430,13 +429,13 @@ object fMain: TfMain
       object BNew: TSpeedButton
         AnchorSideLeft.Control = Toolbar
         AnchorSideTop.Control = Toolbar
-        Left = 7
-        Height = 50
+        Left = 6
+        Height = 40
         Hint = 'New'
-        Top = 7
-        Width = 50
-        BorderSpacing.Left = 6
-        BorderSpacing.Top = 6
+        Top = 6
+        Width = 40
+        BorderSpacing.Left = 5
+        BorderSpacing.Top = 5
         Flat = True
         Font.Color = clSilver
         Glyph.Data = {
@@ -659,13 +658,13 @@ object fMain: TfMain
       object BSave: TSpeedButton
         AnchorSideLeft.Control = Toolbar
         AnchorSideTop.Control = Toolbar
-        Left = 7
-        Height = 50
+        Left = 6
+        Height = 40
         Hint = 'Save'
-        Top = 7
-        Width = 50
-        BorderSpacing.Left = 6
-        BorderSpacing.Top = 6
+        Top = 6
+        Width = 40
+        BorderSpacing.Left = 5
+        BorderSpacing.Top = 5
         Color = 2238503
         Flat = True
         Font.Color = clSilver
@@ -890,13 +889,13 @@ object fMain: TfMain
       object BCopy: TSpeedButton
         AnchorSideLeft.Control = BCut
         AnchorSideTop.Control = Toolbar
-        Left = 131
-        Height = 50
+        Left = 106
+        Height = 40
         Hint = 'Copy'
-        Top = 7
-        Width = 50
-        BorderSpacing.Left = 62
-        BorderSpacing.Top = 6
+        Top = 6
+        Width = 40
+        BorderSpacing.Left = 50
+        BorderSpacing.Top = 5
         Color = 2238503
         Flat = True
         Font.Color = clSilver
@@ -1146,13 +1145,13 @@ object fMain: TfMain
       object BCut: TSpeedButton
         AnchorSideLeft.Control = BSave
         AnchorSideTop.Control = Toolbar
-        Left = 69
-        Height = 50
+        Left = 56
+        Height = 40
         Hint = 'Cut'
-        Top = 7
-        Width = 50
-        BorderSpacing.Left = 62
-        BorderSpacing.Top = 6
+        Top = 6
+        Width = 40
+        BorderSpacing.Left = 50
+        BorderSpacing.Top = 5
         Color = 2238503
         Flat = True
         Font.Color = clSilver
@@ -1377,13 +1376,13 @@ object fMain: TfMain
       object BPaste: TSpeedButton
         AnchorSideLeft.Control = BCopy
         AnchorSideTop.Control = Toolbar
-        Left = 193
-        Height = 50
+        Left = 156
+        Height = 40
         Hint = 'Paste'
-        Top = 7
-        Width = 50
-        BorderSpacing.Left = 62
-        BorderSpacing.Top = 6
+        Top = 6
+        Width = 40
+        BorderSpacing.Left = 50
+        BorderSpacing.Top = 5
         Color = 2238503
         Flat = True
         Font.Color = clSilver
@@ -1633,13 +1632,13 @@ object fMain: TfMain
       object BUndo: TSpeedButton
         AnchorSideLeft.Control = BPaste
         AnchorSideTop.Control = Toolbar
-        Left = 255
-        Height = 50
+        Left = 206
+        Height = 40
         Hint = 'Undo'
-        Top = 7
-        Width = 50
-        BorderSpacing.Left = 62
-        BorderSpacing.Top = 6
+        Top = 6
+        Width = 40
+        BorderSpacing.Left = 50
+        BorderSpacing.Top = 5
         Color = 2238503
         Flat = True
         Font.Color = clSilver
@@ -1864,13 +1863,13 @@ object fMain: TfMain
       object BRedo: TSpeedButton
         AnchorSideLeft.Control = BUndo
         AnchorSideTop.Control = Toolbar
-        Left = 317
-        Height = 50
+        Left = 256
+        Height = 40
         Hint = 'Redo'
-        Top = 7
-        Width = 50
-        BorderSpacing.Left = 62
-        BorderSpacing.Top = 6
+        Top = 6
+        Width = 40
+        BorderSpacing.Left = 50
+        BorderSpacing.Top = 5
         Color = 2238503
         Flat = True
         Font.Color = clSilver
@@ -2095,13 +2094,13 @@ object fMain: TfMain
       object BFind: TSpeedButton
         AnchorSideLeft.Control = BRedo
         AnchorSideTop.Control = Toolbar
-        Left = 379
-        Height = 50
+        Left = 306
+        Height = 40
         Hint = 'Find'
-        Top = 7
-        Width = 50
-        BorderSpacing.Left = 62
-        BorderSpacing.Top = 6
+        Top = 6
+        Width = 40
+        BorderSpacing.Left = 50
+        BorderSpacing.Top = 5
         Color = 2238503
         Flat = True
         Font.Color = clSilver
@@ -2326,13 +2325,13 @@ object fMain: TfMain
       object BReplace: TSpeedButton
         AnchorSideLeft.Control = BFind
         AnchorSideTop.Control = Toolbar
-        Left = 441
-        Height = 50
+        Left = 356
+        Height = 40
         Hint = 'Replace'
-        Top = 7
-        Width = 50
-        BorderSpacing.Left = 62
-        BorderSpacing.Top = 6
+        Top = 6
+        Width = 40
+        BorderSpacing.Left = 50
+        BorderSpacing.Top = 5
         Color = 2238503
         Flat = True
         Font.Color = clSilver
@@ -2558,13 +2557,13 @@ object fMain: TfMain
         AnchorSideTop.Control = Toolbar
         AnchorSideRight.Control = Toolbar
         AnchorSideRight.Side = asrBottom
-        Left = 747
-        Height = 50
+        Left = 757
+        Height = 40
         Hint = 'Help'
-        Top = 13
-        Width = 50
+        Top = 7
+        Width = 40
         Anchors = [akRight]
-        BorderSpacing.Top = 6
+        BorderSpacing.Top = 5
         Color = 2238503
         Flat = True
         Font.Color = clSilver
@@ -2801,13 +2800,13 @@ object fMain: TfMain
         AnchorSideLeft.Control = BHelp
         AnchorSideTop.Control = Toolbar
         AnchorSideRight.Control = BHelp
-        Left = 697
-        Height = 50
+        Left = 717
+        Height = 40
         Hint = 'Options'
-        Top = 13
-        Width = 50
+        Top = 7
+        Width = 40
         Anchors = [akRight]
-        BorderSpacing.Top = 6
+        BorderSpacing.Top = 5
         Color = 2238503
         Flat = True
         Font.Color = clSilver
@@ -3042,13 +3041,13 @@ object fMain: TfMain
       end
       object Image1: TImage
         AnchorSideRight.Control = BOptions
-        Left = 614
-        Height = 38
-        Top = 17
-        Width = 71
+        Left = 650
+        Height = 30
+        Top = 11
+        Width = 57
         Anchors = [akRight]
-        BorderSpacing.Top = 6
-        BorderSpacing.Right = 12
+        BorderSpacing.Top = 5
+        BorderSpacing.Right = 10
         OnClick = Image1Click
         Picture.Data = {
           0A544A706567496D61676554040000FFD8FFE000104A46494600010100000100
@@ -3093,13 +3092,13 @@ object fMain: TfMain
       object BExternalTool: TSpeedButton
         AnchorSideLeft.Control = BReplace
         AnchorSideTop.Control = Toolbar
-        Left = 503
-        Height = 50
+        Left = 406
+        Height = 40
         Hint = 'External Tool'
-        Top = 7
-        Width = 50
-        BorderSpacing.Left = 62
-        BorderSpacing.Top = 6
+        Top = 6
+        Width = 40
+        BorderSpacing.Left = 50
+        BorderSpacing.Top = 5
         Color = 2238503
         Flat = True
         Font.Color = clSilver
@@ -3330,19 +3329,20 @@ object fMain: TfMain
     end
     object PanelRunExternalTool: TPanel
       Left = 1
-      Height = 62
-      Top = 512
+      Height = 50
+      Top = 529
       Width = 798
       Align = alBottom
       Anchors = []
-      ClientHeight = 62
+      ClientHeight = 50
       ClientWidth = 798
       Font.Color = clSilver
       ParentFont = False
       TabOrder = 2
+      Visible = False
       object ListBoxExecuteProcess: TListBox
         Left = 1
-        Height = 60
+        Height = 48
         Top = 1
         Width = 796
         Align = alClient
@@ -3355,8 +3355,8 @@ object fMain: TfMain
     end
   end
   object MainMenu: TMainMenu
-    left = 50
-    top = 110
+    left = 40
+    top = 88
     object MFile: TMenuItem
       Caption = '&File'
       object MNew: TMenuItem
@@ -3541,8 +3541,8 @@ object fMain: TfMain
     Entity = False
     DollarVariables = False
     ActiveDot = False
-    left = 350
-    top = 110
+    left = 280
+    top = 88
   end
   object VocHighlighter: TSynAnySyn
     Enabled = False
@@ -3553,8 +3553,8 @@ object fMain: TfMain
     Entity = False
     DollarVariables = False
     ActiveDot = False
-    left = 480
-    top = 110
+    left = 384
+    top = 88
   end
   object CodeHighlighter: TSynAnySyn
     Enabled = False
@@ -3565,23 +3565,23 @@ object fMain: TfMain
     Entity = False
     DollarVariables = False
     ActiveDot = False
-    left = 620
-    top = 110
+    left = 496
+    top = 88
   end
   object OpenDialog: TOpenDialog
     Filter = 'DAAD files|*.SCE;*.sce;*.DSF;*.dsf|Any files|*.*'
-    left = 80
-    top = 270
+    left = 64
+    top = 216
   end
   object SaveDialog: TSaveDialog
     DefaultExt = '.txp'
-    left = 180
-    top = 270
+    left = 144
+    top = 216
   end
   object MainPopupMenu: TPopupMenu
     OnPopup = MainPopupMenuPopup
-    left = 180
-    top = 110
+    left = 144
+    top = 88
     object PMCondactHelp: TMenuItem
       Caption = 'Condact Help'
       ShortCut = 16496
@@ -3628,8 +3628,8 @@ object fMain: TfMain
     Enabled = False
     Interval = 20
     OnTimer = TimerTimer
-    left = 870
-    top = 289
+    left = 696
+    top = 231
   end
   object SynCompletion: TSynCompletion
     Position = 0
@@ -3642,7 +3642,7 @@ object fMain: TfMain
     EndOfTokenChr = '()[].'
     ExecCommandID = ecSynCompletionExecute
     ToggleReplaceWhole = False
-    left = 70
-    top = 396
+    left = 56
+    top = 317
   end
 end

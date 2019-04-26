@@ -78,7 +78,7 @@ begin
   {$ELSE}
   FStartDatabasePath := IniFile.ReadString('Paths','StartDatabasePath',FullPath('database.start'));
   {$ENDIF}
-  If not FUseSCEDefault THEN FStartDatabasePath := FStartDatabasePath + '.dsf';
+  If (not FUseSCEDefault) AND (pos('.DSF',UpperCase(FStartDatabasePath))=0) THEN FStartDatabasePath := FStartDatabasePath + '.dsf';
 
 
   FHelpBaseURL :=  IniFile.ReadString('URLS','HelpBaseURL','https://github.com/Utodev/ngPAWS/wiki');
