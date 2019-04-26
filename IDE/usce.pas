@@ -21,6 +21,7 @@ type TSCE = class
     FCON : TStringList;
     FProcesses : array[0..255] of  TStringList;
     FFilePath : String;
+    FIsDSF : boolean;
 
     FInterruptProcesNum : integer;
     FLastProcess : integer;
@@ -44,6 +45,7 @@ type TSCE = class
     property InterruptProcessNum : integer read FInterruptProcesNum write FInterruptProcesNum;
     property LastProcess : integer read FLastProcess write FLastProcess;
     property FilePath : String read FFilePath;
+    property IsDSF : Boolean read FIsDSF;
 
 
     constructor Create();
@@ -62,7 +64,7 @@ implementation
 
 uses UGlobals, StrUtils, LConvEncoding, Dialogs;
 
-const BlockNames :  array [0..10] of String = ('DEF','CTL','TOK','VOC','STX','MTX','OTX','LTX','CON','OBJ','PRO');
+const BlockNames :  array [0..11] of String = ('DEF','CTL','TOK','VOC','STX','MTX','OTX','LTX','CON','OBJ','PRO','END');
 
 
 
@@ -116,7 +118,9 @@ begin
     Exit;
   end;
   FileContents.LoadFromFile(Filename);
-  FileContents.Text:= CP437ToUTF8(FileContents.Text);
+  FIsDSF:= pos('.DSF',AnsiUpperCase(FileName))>0;
+
+  if FIsDSF THEN FileContents.Text:= ISO_8859_1ToUTF8(FileContents.Text) else FileContents.Text:= CP437ToUTF8(FileContents.Text);
   ptr := 0;
   CurrentBlockName := BlockNames[0]; // DEF
   CurrentBlockHeader := CurrentBlockName;
@@ -171,12 +175,15 @@ begin
    for i := 0 to FCTL.Count - 1 do DebugFileContents.Add('CTL|' + IntToStr(i));
  end;
 
- FileContents.Add('/TOK');
- FileContents.AddStrings(FTOK);
- if (WidthDebugInfo) then
- begin
-   DebugFileContents.Add('/TOK');
-   for i := 0 to FTOK.Count - 1 do DebugFileContents.Add('TOK|' + IntToStr(i));
+if not(FIsDSF) THEN
+begin
+   FileContents.Add('/TOK');
+   FileContents.AddStrings(FTOK);
+   if (WidthDebugInfo) then
+   begin
+     DebugFileContents.Add('/TOK');
+     for i := 0 to FTOK.Count - 1 do DebugFileContents.Add('TOK|' + IntToStr(i));
+   end;
  end;
 
 
@@ -252,7 +259,11 @@ begin
      for j := 0 to FProcesses[i].Count - 1 do DebugFileContents.Add('PRO ' + IntToStr(i) + '|' + IntToStr(j));
    end;
  end;
- FileContents.Text := UTF8ToCP437(FileContents.Text);
+ if FIsDSF THEN
+ BEGIN
+   FileContents.Text := UTF8ToISO_8859_1(FileContents.Text);
+   FileContents.Add('/END');
+  END else  FileContents.Text := UTF8ToCP437(FileContents.Text);
  FileContents.SaveToFile(Filename);
  FileContents.Free();
  if WidthDebugInfo then
@@ -280,6 +291,7 @@ begin
  if (NameTag = 'OTX') then FOTX.Text := Content.Text else
  if (NameTag = 'CON') then FCON.Text := Content.Text else
  if (NameTag = 'OBJ') then FOBJ.Text := Content.Text else
+ if (NameTag = 'END') then BEGIN END else // No hacer nada
  if (NameTag = 'PRO') then
  begin
       MarkAsInterrupt := false;

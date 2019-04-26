@@ -1,20 +1,21 @@
 object fAbout: TfAbout
   Left = 924
-  Height = 223
+  Height = 279
   Top = 271
-  Width = 352
+  Width = 440
   BorderStyle = bsDialog
   Caption = 'EAAD'
-  ClientHeight = 223
-  ClientWidth = 352
+  ClientHeight = 279
+  ClientWidth = 440
   Color = clWhite
+  DesignTimePPI = 120
   Position = poMainFormCenter
-  LCLVersion = '1.6.2.0'
+  LCLVersion = '2.0.2.0'
   object Image: TImage
-    Left = 240
-    Height = 67
-    Top = 32
-    Width = 104
+    Left = 300
+    Height = 84
+    Top = 40
+    Width = 130
     OnClick = ImageClick
     Picture.Data = {
       1754506F727461626C654E6574776F726B47726170686963FE24000089504E47
@@ -318,35 +319,38 @@ object fAbout: TfAbout
     Stretch = True
   end
   object Label1: TLabel
-    Left = 16
-    Height = 15
-    Top = 32
-    Width = 216
+    Left = 20
+    Height = 20
+    Top = 40
+    Width = 276
     Caption = 'Editor de Aventuras AD(C) 2015-2018 Uto'
     ParentColor = False
+    ParentFont = False
   end
   object LabelDetails: TLabel
-    Left = 16
-    Height = 15
-    Top = 66
-    Width = 155
+    Left = 20
+    Height = 20
+    Top = 82
+    Width = 197
     Caption = 'Lazarus source code avaliable'
     ParentColor = False
+    ParentFont = False
   end
   object Label2: TLabel
-    Left = 16
-    Height = 15
-    Top = 86
-    Width = 83
+    Left = 20
+    Height = 20
+    Top = 108
+    Width = 103
     Caption = 'at GitHub (GPL)'
     ParentColor = False
+    ParentFont = False
   end
   object LabelnGithubSite: TLabel
     Cursor = crHandPoint
-    Left = 16
-    Height = 15
-    Top = 196
-    Width = 180
+    Left = 20
+    Height = 20
+    Top = 245
+    Width = 222
     Caption = 'https://github.com/Utodev/EAAD'
     Font.Color = clHighlight
     Font.Style = [fsUnderline]
@@ -355,37 +359,41 @@ object fAbout: TfAbout
     OnClick = LabelnGithubSiteClick
   end
   object LabelDetails1: TLabel
-    Left = 15
-    Height = 15
-    Top = 112
-    Width = 250
+    Left = 19
+    Height = 20
+    Top = 140
+    Width = 317
     Caption = 'AD logo use gently allowed by Andrés Samudio'
     ParentColor = False
+    ParentFont = False
   end
   object LabelDetails2: TLabel
-    Left = 16
-    Height = 24
-    Top = 144
-    Width = 512
+    Left = 20
+    Height = 30
+    Top = 180
+    Width = 640
     AutoSize = False
     Caption = 'This editor is not  an Aventuras AD product but '
     ParentColor = False
+    ParentFont = False
     WordWrap = True
   end
   object Label3: TLabel
-    Left = 16
-    Height = 15
-    Top = 171
-    Width = 261
+    Left = 20
+    Height = 20
+    Top = 214
+    Width = 328
     Caption = 'it''s endorsed/recommended by El Viejo Archivero'
     ParentColor = False
+    ParentFont = False
   end
   object LabelDetails3: TLabel
-    Left = 15
-    Height = 15
-    Top = 48
-    Width = 24
-    Caption = 'v 1.1'
+    Left = 19
+    Height = 20
+    Top = 60
+    Width = 30
+    Caption = 'v 1.2'
     ParentColor = False
+    ParentFont = False
   end
 end
