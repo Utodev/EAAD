@@ -115,7 +115,7 @@ var
 
 implementation
 
-uses UGlobals, DOM, XMLRead ;
+uses UGlobals, DOM, XMLRead, UMain ;
 
 {$R *.lfm}
 
@@ -464,6 +464,7 @@ begin
   verb := EditVerb.Text;
   if CheckBoxRequiresNoun.Checked then noun := EditNoun.Text else noun := '_';
   entry := verb + ' ' + noun;
+  if (fMain.SCE.IsDSF) THEN entry := '> ' + entry;
 
   // Get any additional word requierements
   word_extra_conditions:='';
@@ -492,7 +493,8 @@ begin
      if (CheckBoxIncludeWordsOnFailure.Checked) then Code.Add(word_extra_conditions);
      if (CheckBoxLinkedToLocation.Checked) then Code.Add(location_conditions);
      Code.Add(' ' + GetOppositeCondact(ListBoxConditions.Items[i]));
-     Code.Add(' MESSAGE ' + getMessNumber(GetTOF(ListBoxConditions.Items[i])) +  '; "'+GetTOF(ListBoxConditions.Items[i])+'"');
+     if fMain.SCE.IsDSF THEN Code.Add(' MESSAGE "' +GetTOF(ListBoxConditions.Items[i])+'"')
+                        ELSE Code.Add(' MESSAGE ' + getMessNumber(GetTOF(ListBoxConditions.Items[i])) +  '; "'+GetTOF(ListBoxConditions.Items[i])+'"');
      Code.Add(' DONE');
      Code.Add(';');
    end;
@@ -502,7 +504,8 @@ begin
   begin
     Code.Add(Entry);
     Code.Add(' NOTAT ' + EditLocation.Text);
-    Code.Add(' MESSAGE ' + getMessNumber(EditLocationTOF.Text) +  '; "'+EditLocationTOF.Text+'"');
+    if fMain.SCE.IsDSF THEN Code.Add(' MESSAGE "' +EditLocationTOF.Text +'"')
+                       ELSE Code.Add(' MESSAGE ' + getMessNumber(EditLocationTOF.Text) +  '; "'+EditLocationTOF.Text+'"');
     Code.Add(' DONE');
     Code.Add(';');
   end;
@@ -516,7 +519,8 @@ begin
     Code.Add(' ' + getCondact(ListBoxConditions.Items[i]));
   for i := 0 to ListBoxActions.Count - 1 do
     Code.Add(' ' + ListBoxActions.Items[i]);
-  Code.Add(' MESSAGE ' + getMessNumber(EditTOS.Text) +  '; "'+EditTOS.Text+'"');
+  if fMain.SCE.IsDSF THEN Code.Add(' MESSAGE "' +EditTOS.Text +'"')
+                     ELSE Code.Add(' MESSAGE ' + getMessNumber(EditTOS.Text) +  '; "'+EditTOS.Text+'"');
   Code.Add(' DONE');
   Code.Add(';');
 

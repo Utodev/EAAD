@@ -19,13 +19,16 @@ type
     checkOpenAllTabs: TCheckBox;
     checkShowToolbar: TCheckBox;
     checkSaveBeforeRun: TCheckBox;
+    checkUseSCE: TCheckBox;
     ComboBoxLang: TComboBox;
     EditHelpURL: TEdit;
+    EditExternalTool: TEdit;
     EditStartDatabase: TEdit;
     GroupBoxEditor: TGroupBox;
     LabelLang: TLabel;
     LabelHelpURL: TLabel;
     LabelStartDatabase: TLabel;
+    LabelExternalTool: TLabel;
     OpenDialogOptions: TOpenDialog;
     procedure BBrowseCompilerClick(Sender: TObject);
     procedure BBrowsePreprocessorClick(Sender: TObject);
@@ -56,9 +59,11 @@ begin
  checkShowToolbar.Checked :=  fMain.Config.ShowToolBar;
  checkSaveBeforeRun.Checked:=fMain.Config.SaveBeforeRun;
  checkOpenAllTabs.Checked:=fMain.Config.OpenAllTabs;
+ checkUseSCE.Checked := fMain.Config.UseSCEDefault;
 
  EditHelpURL.Text:= fMain.Config.HelpBaseURL;
  EditStartDatabase.Text:= fMain.Config.StartDatabasePath;
+ EditExternalTool.Text := fMain.Config.ExternalTool;
 
  ComboBoxLang.ItemIndex := 0;
  if fMain.Config.Lang = 'es' then  ComboBoxLang.ItemIndex := 2 else if fMain.Config.Lang = 'en' then ComboBoxLang.ItemIndex := 1;
@@ -70,11 +75,13 @@ begin
   Config.ShowToolBar := checkShowToolbar.Checked;
   Config.SaveBeforeRun := checkSaveBeforeRun.Checked;
   Config.OpenAllTabs := checkOpenAllTabs.Checked;
+  Config.UseSCEDefault:= checkUseSCE.Checked;
 
 
 
    Config.HelpBaseURL := EditHelpURL.Text;
    Config.StartDatabasePath := EditStartDatabase.Text;
+   Config.ExternalTool:=EditExternalTool.Text;
 
    if LanguageChanged then
       case ComboBoxLang.ItemIndex of

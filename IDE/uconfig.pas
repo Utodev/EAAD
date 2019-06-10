@@ -15,8 +15,10 @@ private
  FSaveBeforeRun : Boolean;
  FShowToolBar : Boolean;
  FOpenAllTabs : Boolean;
+ FUseSCEDefault: Boolean;
  FLang : String;
  FRecentFiles: Array[0..9] of string;
+ FExternalTool : String;
 
  FEditorFontSize: integer;
  FEditorBackgroundColor: Integer;
@@ -26,9 +28,11 @@ private
 public
  property StartDatabasePath : String read FStartDatabasePath write FStartDatabasePath;
  property HelpBaseURL : String read FHelpBaseURL write FHelpBaseURL;
+ property ExternalTool : String read FExternalTool write FExternalTool;
 
  property SaveBeforeRun : Boolean read FSaveBeforeRun write FSaveBeforeRun;
  property ShowToolBar : Boolean read FShowToolBar write FShowToolBar;
+ property UseSCEDefault : Boolean read FUseSCEDefault write FUseSCEDefault;
  property OpenAllTabs : Boolean read  FOpenAllTabs write  FOpenAllTabs;
 
  property Lang: String read FLang write FLang;
@@ -68,19 +72,23 @@ begin
   {$ENDIF}
   IniFile := TIniFile.Create(ConfigFilePath);
 
+  FUseSCEDefault := IniFile.ReadBool('Options','UseSCEDefault',false);
   {$IFDEF Windows}
   FStartDatabasePath := IniFile.ReadString('Paths','StartDatabasePath','database.start');
   {$ELSE}
   FStartDatabasePath := IniFile.ReadString('Paths','StartDatabasePath',FullPath('database.start'));
   {$ENDIF}
+  If (not FUseSCEDefault) AND (pos('.DSF',UpperCase(FStartDatabasePath))=0) THEN FStartDatabasePath := FStartDatabasePath + '.dsf';
 
 
   FHelpBaseURL :=  IniFile.ReadString('URLS','HelpBaseURL','https://github.com/Utodev/ngPAWS/wiki');
 
+  FExternalTool := IniFile.ReadString('Paths','ExternalTool','');
 
   FSaveBeforeRun := IniFile.ReadBool('Options','SaveBeforeRun',true);
   FShowToolBar :=  IniFile.ReadBool('Options','ShowToolBar',true);
   FOpenAllTabs :=  IniFile.ReadBool('Options','OpenAllTabs',false);
+  FUseSCEDefault := IniFile.ReadBool('Options','UseSCEDefault',false);
 
   {$IFDEF WINDOWS}
   FEditorFontName := IniFile.ReadString('Options','EditorFontName', 'Consolas');
@@ -111,6 +119,7 @@ begin
   IniFile := TIniFile.Create(ConfigFilePath);
 
   IniFile.WriteString('Paths','StartDatabasePath', FullPath(FStartDatabasePath));
+  IniFile.WriteString('Paths','ExternalTool',FExternalTool);
 
   IniFile.WriteString('URLS','HelpBaseURL', FHelpBaseURL);
 
@@ -118,6 +127,7 @@ begin
   IniFile.WriteBool('Options','SaveBeforeRun', FSaveBeforeRun);
   IniFile.WriteBool('Options','ShowToolBar', FShowToolBar);
   IniFile.WriteBool('Options','OpenAllTabs', FOpenAllTabs);
+  IniFile.WriteBool('Options','UseSCEDefault', FUseSCEDefault);
 
   IniFile.WriteInteger('Options','EditorFontSize',FEditorFontSize);
 

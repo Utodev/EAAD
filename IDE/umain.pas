@@ -6,9 +6,9 @@ interface
 
 uses
    {$IFDEF Windows}windows,{$endif} Classes, SysUtils, LazFileUtils, SynHighlighterAny,
-   SynEdit, ExtendedNotebook, Forms, Controls, Graphics, Dialogs, Menus,
+   SynEdit,  Forms, Controls, Graphics, Dialogs, Menus,
    ExtCtrls, ComCtrls, StdCtrls, Buttons, UConfig, usce, UAbout, SynEditTypes,
-   SynCompletion, Clipbrd, LCLTranslator, types, LCLType;
+   SynCompletion, Clipbrd, LCLTranslator,  LCLType, URunDOS;
 
 type
 
@@ -17,6 +17,7 @@ type
   TfMain = class(TForm)
     BOptions: TSpeedButton;
     BCopy: TSpeedButton;
+    BExternalTool: TSpeedButton;
     BReplace: TSpeedButton;
     BPaste: TSpeedButton;
     BCut: TSpeedButton;
@@ -26,10 +27,13 @@ type
     BSave: TSpeedButton;
     BRedo: TSpeedButton;
     Image1: TImage;
+    ListBoxExecuteProcess: TListBox;
     MainMenu: TMainMenu;
     MEdit: TMenuItem;
     MControl: TMenuItem;
+    MExternalTool: TMenuItem;
     MTokens: TMenuItem;
+    PanelRunExternalTool: TPanel;
     PMPuzzleWizard: TMenuItem;
     MAbout: TMenuItem;
     MData: TMenuItem;
@@ -88,6 +92,7 @@ type
     procedure BCompileClick(Sender: TObject);
     procedure BCopyClick(Sender: TObject);
     procedure BCutClick(Sender: TObject);
+    procedure BExternalToolClick(Sender: TObject);
     procedure BFindClick(Sender: TObject);
     procedure BHelpClick(Sender: TObject);
     procedure BNewClick(Sender: TObject);
@@ -100,6 +105,7 @@ type
     procedure BSaveClick(Sender: TObject);
     procedure BUndoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure MAboutClick(Sender: TObject);
@@ -114,6 +120,7 @@ type
     procedure MDataClick(Sender: TObject);
     procedure MDefinitionsClick(Sender: TObject);
     procedure Memo1Change(Sender: TObject);
+    procedure MExternalToolClick(Sender: TObject);
     procedure MFindClick(Sender: TObject);
     procedure MFindNextClick(Sender: TObject);
     procedure MHelpContentsClick(Sender: TObject);
@@ -138,7 +145,6 @@ type
     procedure MVocabularyClick(Sender: TObject);
     procedure PageControlChange(Sender: TObject);
     procedure PageControlChanging(Sender: TObject; var AllowChange: Boolean);
-    procedure PanelBackgroundClick(Sender: TObject);
     procedure MProcessItemClick(Sender: TObject);
     procedure PMCondactHelpClick(Sender: TObject);
     procedure PMCopyClick(Sender: TObject);
@@ -151,6 +157,7 @@ type
     procedure OpenBrowser(URL: String);
     procedure MRecentFilesClick(Sender: TObject);
     procedure TimerTimer(Sender: TObject);
+    procedure CheckExternalTool();
 
 
   private
@@ -194,9 +201,15 @@ uses uoptions, UGlobals, USearchReplace,  lclintf, UPuzzleWizard;
 
 { TfMain }
 
-procedure TfMain.PanelBackgroundClick(Sender: TObject);
+procedure TfMain.CheckExternalTool();
 begin
-
+ (*
+   if (BFind.Visible) and (Config.ExternalTool<>'') then
+   begin
+    MExternalTool.Enabled:=true;
+    BExternalTool.visible:=true;
+  end;
+  *)
 end;
 
 function TfMain.ShowNotSaveWarning: boolean;
@@ -237,6 +250,11 @@ begin
   AutoCompleteBaseList.AddStrings(VocHighlighter.Objects);
   BuildRecentFilesMenu();
   LastSearchText:='';
+end;
+
+procedure TfMain.FormResize(Sender: TObject);
+begin
+  if (PanelRunExternalTool.Visible) then PanelRunExternalTool.Height := round(fMain.Height * 0.25);
 end;
 
 procedure TfMain.FormShow(Sender: TObject);
@@ -378,6 +396,12 @@ begin
 
 end;
 
+procedure TfMain.MExternalToolClick(Sender: TObject);
+begin
+//  ExecuteProcess(Config.ExternalTool, SCE.FilePath,[]);
+ RunDosInList(Config.ExternalTool + ' ' + SCE.FilePath,ListBoxExecuteProcess, true);
+end;
+
 
 
 procedure TfMain.MHelpContentsClick(Sender: TObject);
@@ -448,6 +472,11 @@ begin
   MCut.Click();
 end;
 
+procedure TfMain.BExternalToolClick(Sender: TObject);
+begin
+ MExternalTool.Click();
+end;
+
 procedure TfMain.BFindClick(Sender: TObject);
 begin
   MFind.Click();
@@ -469,7 +498,8 @@ end;
 
 procedure TfMain.MNewClick(Sender: TObject);
 begin
-  SaveDialog.FileName:=S_DEFAULT_FILENAME;
+  if Config.UseSCEDefault then SaveDialog.FileName:= S_DEFAULT_FILENAME
+                          else SaveDialog.FileName:= S_DEFAULT_FILENAME_DSF;
 
   if (SaveDialog.Execute) then if (CreateNewGame(SaveDialog.FileName)) then OpenFile(SaveDialog.FileName);
 end;
@@ -496,7 +526,7 @@ end;
 procedure TfMain.MOpenAllSectionsClick(Sender: TObject);
 var i : integer;
 begin
-  for i:= 0 to MData.Count - 1 do  MData.Items[i].Click();
+  for i:= 0 to MData.Count - 1 do if MDAta.Items[i].Visible THEN  MData.Items[i].Click();
   for i:= 0 to MProcesses.Count - 1 do  MProcesses.Items[i].Click();
 end;
 
@@ -553,6 +583,8 @@ begin
   SCE := TSCE.Create();
   if (SCE.LoadSCE(Filename)) then
   begin
+
+       MTokens.Visible := not SCE.IsDSF;
        fMain.Caption:= 'Editor de Aventuras AD - ' + ExtractFileName(FileName);
        Config.AddRecentFile(FileName);
        BuildRecentFilesMenu();
@@ -568,7 +600,11 @@ end;
 
 procedure TfMain.MOpenFileClick(Sender: TObject);
 begin
-  if OpenDialog.Execute then OpenFile(OpenDialog.FileName);
+  if OpenDialog.Execute then
+  begin
+    OpenFile(OpenDialog.FileName);
+    CheckExternalTool();
+  end;
 end;
 
 procedure TfMain.MProcessItemClick(Sender: TObject);
@@ -686,6 +722,7 @@ begin
 end;
 
 
+
 procedure TfMain.MOptionsClick(Sender: TObject);
 begin
   if fOptions.ShowModal = mrOK then
@@ -694,6 +731,7 @@ begin
     Config.SaveConfig();
     Toolbar.Visible:=Config.ShowToolBar;
     if Config.Lang<>'' then SetDefaultLang(Config.Lang);
+    CheckExternalTool();
   end;
 end;
 
@@ -1063,16 +1101,8 @@ end;
 
 function TfMain.CreateNewGame(Filename: String):boolean;
 var StringList :TStringList;
-    SourcePath : String;
-    DestPath :String;
-    FileBaseName :String;
-    i : integer;
 begin
  // Check required files exist
-
- FileBaseName:= ExtractFileNameOnly(Filename);
- SourcePath:= ExtractFilePath(Config.StartDatabasePath);
-
  if (not FileExists(Config.StartDatabasePath)) then
  begin
     ShowMessage(S_START_DATABASE_NOT_FOUND);
@@ -1082,12 +1112,10 @@ begin
 
 
   //Create new game
-  DestPath := ExtractFilePath(Filename);
-
   StringList := TStringList.Create();
   StringList.LoadFromFile(Config.StartDatabasePath);
   StringList.SaveToFile(Filename);
-
+  CheckExternalTool();
   Result := true;
 end;
 

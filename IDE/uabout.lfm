@@ -9,7 +9,7 @@ object fAbout: TfAbout
   ClientWidth = 352
   Color = clWhite
   Position = poMainFormCenter
-  LCLVersion = '1.6.2.0'
+  LCLVersion = '2.0.0.4'
   object Image: TImage
     Left = 240
     Height = 67
@@ -322,8 +322,9 @@ object fAbout: TfAbout
     Height = 15
     Top = 32
     Width = 216
-    Caption = 'Editor de Aventuras AD(C) 2015-2018 Uto'
+    Caption = 'Editor de Aventuras AD(C) 2015-2019 Uto'
     ParentColor = False
+    ParentFont = False
   end
   object LabelDetails: TLabel
     Left = 16
@@ -332,6 +333,7 @@ object fAbout: TfAbout
     Width = 155
     Caption = 'Lazarus source code avaliable'
     ParentColor = False
+    ParentFont = False
   end
   object Label2: TLabel
     Left = 16
@@ -340,6 +342,7 @@ object fAbout: TfAbout
     Width = 83
     Caption = 'at GitHub (GPL)'
     ParentColor = False
+    ParentFont = False
   end
   object LabelnGithubSite: TLabel
     Cursor = crHandPoint
@@ -361,6 +364,7 @@ object fAbout: TfAbout
     Width = 250
     Caption = 'AD logo use gently allowed by Andrés Samudio'
     ParentColor = False
+    ParentFont = False
   end
   object LabelDetails2: TLabel
     Left = 16
@@ -370,6 +374,7 @@ object fAbout: TfAbout
     AutoSize = False
     Caption = 'This editor is not  an Aventuras AD product but '
     ParentColor = False
+    ParentFont = False
     WordWrap = True
   end
   object Label3: TLabel
@@ -379,13 +384,15 @@ object fAbout: TfAbout
     Width = 261
     Caption = 'it''s endorsed/recommended by El Viejo Archivero'
     ParentColor = False
+    ParentFont = False
   end
   object LabelDetails3: TLabel
     Left = 15
     Height = 15
     Top = 48
     Width = 24
-    Caption = 'v 1.1'
+    Caption = 'v 1.3'
     ParentColor = False
+    ParentFont = False
   end
 end
