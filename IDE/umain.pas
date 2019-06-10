@@ -8,7 +8,7 @@ uses
    {$IFDEF Windows}windows,{$endif} Classes, SysUtils, LazFileUtils, SynHighlighterAny,
    SynEdit,  Forms, Controls, Graphics, Dialogs, Menus,
    ExtCtrls, ComCtrls, StdCtrls, Buttons, UConfig, usce, UAbout, SynEditTypes,
-   SynCompletion, Clipbrd, LCLTranslator,  LCLType, URunDOS;
+   SynCompletion, Clipbrd, LCLTranslator,  LCLType;
 
 type
 
@@ -399,7 +399,7 @@ end;
 procedure TfMain.MExternalToolClick(Sender: TObject);
 begin
 //  ExecuteProcess(Config.ExternalTool, SCE.FilePath,[]);
- RunDosInList(Config.ExternalTool + ' ' + SCE.FilePath,ListBoxExecuteProcess, true);
+ //RunDosInList(Config.ExternalTool + ' ' + SCE.FilePath,ListBoxExecuteProcess, true);
 end;
 
 
