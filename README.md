@@ -6,6 +6,6 @@ To compile the GUI, use Lazarus: https://www.lazarus-ide.org/
 
 Licensed under the GPL v2 or later version.
 
-To find latest relase files, go to:
+To download EAAD (Windows, MacOS, Linux) go to:
 
 https://www.ngpaws.com/downloads/DAAD/EAAD
